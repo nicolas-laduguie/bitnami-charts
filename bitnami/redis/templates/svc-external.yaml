@@ -18,14 +18,15 @@ metadata:
   namespace: {{ include "common.names.namespace" $ | quote }}
   labels: {{- include "common.labels.standard" ( dict "customLabels" $root.Values.commonLabels "context" $ ) | nindent 4 }}
     pod: {{ $targetPod }}
+  {{- $loadBalancerIPAnnotaion := "" }}
   {{- if or
     (ne $root.Values.sentinel.externalAccess.service.loadBalancerIPAnnotaion "") }}
-  {{- $loadBalancerIPAnnotaion := "" }}
   {{- if ne $root.Values.sentinel.externalAccess.service.loadBalancerIPAnnotaion ""}}
     {{- $loadBalancerIPAnnotaion = printf
       "%s: %s"
       $root.Values.sentinel.externalAccess.service.loadBalancerIPAnnotaion
       (index $root.Values.sentinel.externalAccess.service.loadBalancerIP $i) }}
+  {{- end }}
   {{- end }}
   {{- $annotations := include "common.tplvalues.merge"
     ( dict "values"
@@ -35,7 +36,6 @@ metadata:
         $loadBalancerIPAnnotaion
       ) "context" $ ) }}
   annotations: {{- include "common.tplvalues.render" ( dict "value" $annotations "context" $) | nindent 4 }}
-  {{- end }}
 spec:
   type: {{ $root.Values.sentinel.externalAccess.service.type }}
   {{- if and
