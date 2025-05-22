@@ -1,8 +1,16 @@
 # Changelog
 
-## 21.1.5 (2025-05-20)
+## 21.1.7 (2025-05-20)
 
 * [bitnami/redis] Fix external service annotations ignored #33270 ([#33776](https://github.com/bitnami/charts/pull/33776))
+
+## 21.1.6 (2025-05-22)
+
+* [bitnami/redis] :zap: :arrow_up: Update dependency references ([#33825](https://github.com/bitnami/charts/pull/33825))
+
+## <small>21.1.5 (2025-05-20)</small>
+
+* [bitnami/redis] :zap: :arrow_up: Update dependency references (#33790) ([2f87f3a](https://github.com/bitnami/charts/commit/2f87f3a604a31ee82cc5adbada56e351a87ace05)), closes [#33790](https://github.com/bitnami/charts/issues/33790)
 
 ## <small>21.1.4 (2025-05-20)</small>
 
